@@ -6,7 +6,7 @@ import { Schedule } from '../model/schedule';
   providedIn: 'root'
 })
 export class ScheduleService {
-  
+
   private agendas: Schedule[] = [
     {
       id: 1,
@@ -38,7 +38,7 @@ export class ScheduleService {
     const agendas = storedAgendas ? JSON.parse(storedAgendas) : [];
     return of(agendas);
   }
-  
+
 
   addAgenda(agenda: Schedule): void {
     const id = this.agendas.length + 1
@@ -46,6 +46,22 @@ export class ScheduleService {
     this.agendas.push(agenda);
     localStorage.setItem('agendas', JSON.stringify(this.agendas));
   }
+
+  // putAgenda(agenda: Schedule): void {
+  //   this.agendas.push(agenda);
+  //   localStorage.setItem('agendas', JSON.stringify(this.agendas));
+  // }
+
+  updateAgenda(id: number, updatedValues: Partial<Schedule>): void {
+    const index = this.agendas.findIndex(agenda => agenda.id === id);
+    if (index >= 0) {
+      const updatedAgenda = { ...this.agendas[index], ...updatedValues };
+      this.agendas[index] = updatedAgenda;
+      localStorage.setItem('agendas', JSON.stringify(this.agendas));
+    }
+  }
+  
+
 
   deleteAgenda(id: number): void {
     this.agendas = this.agendas.filter(agenda => agenda.id !== id);
