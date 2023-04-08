@@ -41,6 +41,8 @@ export class ScheduleService {
   
 
   addAgenda(agenda: Schedule): void {
+    const id = this.agendas.length + 1
+    agenda.id = id;
     this.agendas.push(agenda);
     localStorage.setItem('agendas', JSON.stringify(this.agendas));
   }

@@ -10,7 +10,7 @@
                     <button mat-icon-button color="primary" aria-label="Edit">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button mat-icon-button color="warn" aria-label="Delete">
+                    <button (click)="deleteSchedule(agenda.id)" mat-icon-button color="warn" aria-label="Delete">
                         <mat-icon>delete</mat-icon>
                     </button>
                 </div>

@@ -22,4 +22,9 @@ export class AgendaListComponent implements OnInit {
     this.agendaService.getAgendas()
       .subscribe(agendas => this.agendas = agendas);
   }
+
+  deleteSchedule(id: number) {
+    this.agendaService.deleteAgenda(id);
+    window.location.reload();
+  }
 }
