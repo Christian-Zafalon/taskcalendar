@@ -10,17 +10,17 @@ export class ScheduleService {
   private agendas: Schedule[] = [
     {
       id: 1,
-      title: 'REUNIAO',
+      title: 'MEETING',
       date: new Date(2022, 11, 30),
       time: '09:00',
-      notes: 'Reunião de equipe'
+      notes: 'Meeting to decide on the business rule'
     },
     {
       id: 2,
-      title: 'APRESENTACAO',
+      title: 'PRESENTATION',
       date: new Date(2022, 11, 31),
       time: '14:00',
-      notes: 'Apresentação de projeto'
+      notes: 'Presentation of the final project to the client (Production)'
     }
   ];
 

@@ -30,6 +30,6 @@
     </form>
 </div>
 <div mat-dialog-actions>
-    <button mat-raised-button color="primary" (click)="createSchedule()">Add</button>
+    <button [disabled]="agendaForm.invalid" mat-raised-button color="primary" (click)="createSchedule()">Add</button>
     <button mat-button (click)="cancel()">Cancel</button>
 </div>

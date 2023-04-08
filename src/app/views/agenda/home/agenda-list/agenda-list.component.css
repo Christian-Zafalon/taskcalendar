@@ -20,3 +20,13 @@
     background-color: #90CAF9 !important; 
     color: black !important;
 }
+
+.button-group {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.button-group button {
+    margin-left: 8px;
+}
