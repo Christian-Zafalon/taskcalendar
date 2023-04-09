@@ -26,7 +26,8 @@ export class AgendaFormDialogComponent implements OnInit {
       title: [this.data ? this.data.title : '', Validators.required],
       date: [this.data ? this.data.date : '', Validators.required],
       time: [this.data ? this.data.time : '', Validators.required],
-      notes: [this.data ? this.data.notes : '', Validators.required]
+      notes: [this.data ? this.data.notes : '', Validators.required],
+      done: [false]
     });
   }
 

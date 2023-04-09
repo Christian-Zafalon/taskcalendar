@@ -10,7 +10,7 @@ export class CommitmentFulfilledService {
   private commitmentsMade: Schedule[] = [
     {
       id: 1,
-      title: 'MEEteeeeTING',
+      title: 'Tarefa feita1',
       date: new Date(2022, 11, 30),
       time: '09:00',
       notes: 'Meeting to decide on the business rule',
@@ -18,11 +18,11 @@ export class CommitmentFulfilledService {
     },
     {
       id: 2,
-      title: 'teste',
+      title: 'Tarefa feita 2',
       date: new Date(2022, 11, 31),
       time: '14:00',
       notes: 'Presentation of the final project to the client (Production)',
-      done: false
+      done: true
     }
   ];
   
@@ -46,6 +46,7 @@ export class CommitmentFulfilledService {
   addFinalizedSchedule(commitment: Schedule): void {
     const id = this.commitmentsMade.length + 1
     commitment.id = id;
+    commitment.done = true
     this.commitmentsMade.push(commitment);
     localStorage.setItem('commitmentsMade', JSON.stringify(this.commitmentsMade));
   }

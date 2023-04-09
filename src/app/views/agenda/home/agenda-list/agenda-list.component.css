@@ -59,3 +59,9 @@
     height: 15px; 
     text-align: center;
   }
+
+  .empty-placeholder {
+    height: 50px; /* ou qualquer outra altura que você preferir */
+    width: 100%;
+  }
+  

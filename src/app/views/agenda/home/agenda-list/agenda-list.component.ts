@@ -7,7 +7,6 @@ import { AgendaFormDialogComponent } from '../agenda-form-dialog/agenda-form-dia
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { CommitmentFulfilledService } from 'src/app/shared/service/commitment-fulfilled.service';
 
-
 @Component({
   selector: 'app-agenda-list',
   templateUrl: './agenda-list.component.html',
@@ -44,6 +43,11 @@ export class AgendaListComponent implements OnInit {
     window.location.reload();
   }
 
+  deleteFinished(id: number) {
+    this.commitmentFulFilled.deleteFinalizedSchedule(id);
+    window.location.reload();
+  }
+
   editSchedule(schedule: Schedule): void {
     const dialogRef = this.dialog.open(AgendaFormDialogComponent, {
       width: '450px',
@@ -54,37 +58,28 @@ export class AgendaListComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+  
 
-  drop(evento: CdkDragDrop<Schedule[]>) {
-    debugger
-    if (evento.previousContainer === evento.container) {
-      moveItemInArray(evento.container.data, evento.previousIndex, evento.currentIndex);
+  drop(event: CdkDragDrop<Schedule[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      transferArrayItem(evento.previousContainer.data,
-                        evento.container.data,
-                        evento.previousIndex,
-                        evento.currentIndex);
-      console.log(evento.container.data); // Verificar se o array está sendo corretamente passado
-      evento.container.data[evento.currentIndex].done = evento.container.id === 'doneList';
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+      if (event.item.data.done === false) {
+        let agendaId = event.item.data.id;
+        this.commitmentFulFilled.addFinalizedSchedule(event.item.data);
+        this.agendaService.deleteAgenda(agendaId);
+      }else{
+        let agendaId = event.item.data.id;
+        this.agendaService.addAgenda(event.item.data);
+        this.commitmentFulFilled.deleteFinalizedSchedule(agendaId);
+      }
     }
+    console.log(event.item.data)
   }
-
-  // drop(event: CdkDragDrop<Schedule[]>) {
-  //   if (event.previousContainer === event.container) {
-  //     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-  //   } else {
-  //     transferArrayItem(
-  //       event.previousContainer.data,
-  //       event.container.data,
-  //       event.previousIndex,
-  //       event.currentIndex,
-  //     );
-  //   }
-  // }
-  
-  
-  
-  
-  
-  
 }

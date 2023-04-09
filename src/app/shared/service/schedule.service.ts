@@ -14,7 +14,7 @@ export class ScheduleService {
       date: new Date(2022, 11, 30),
       time: '09:00',
       notes: 'Meeting to decide on the business rule',
-      done: true
+      done: false
     },
     {
       id: 2,
@@ -46,6 +46,7 @@ export class ScheduleService {
   addAgenda(agenda: Schedule): void {
     const id = this.agendas.length + 1
     agenda.id = id;
+    agenda.done = false;
     this.agendas.push(agenda);
     localStorage.setItem('agendas', JSON.stringify(this.agendas));
   }
