@@ -5,6 +5,7 @@ import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { AgendaFormDialogComponent } from '../agenda-form-dialog/agenda-form-dialog.component';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CommitmentFulfilledService } from 'src/app/shared/service/commitment-fulfilled.service';
 
 
 @Component({
@@ -19,16 +20,23 @@ export class AgendaListComponent implements OnInit {
 
   constructor(
     private agendaService: ScheduleService, 
+    private commitmentFulFilled: CommitmentFulfilledService,
     private datePipe: DatePipe,
     public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getAgendas();
+    this.getFinished();
   }
 
   getAgendas(): void {
     this.agendaService.getAgendas()
       .subscribe(agendas => this.agendas = agendas);
+  }
+
+  getFinished(): void {
+    this.commitmentFulFilled.getFinalizedSchedule()
+      .subscribe(commitmentFinalized => this.taskPerformed = commitmentFinalized);
   }
 
   deleteSchedule(id: number) {
@@ -47,15 +55,36 @@ export class AgendaListComponent implements OnInit {
     });
   }
 
-  drop(event: CdkDragDrop<Schedule[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+  drop(evento: CdkDragDrop<Schedule[]>) {
+    debugger
+    if (evento.previousContainer === evento.container) {
+      moveItemInArray(evento.container.data, evento.previousIndex, evento.currentIndex);
     } else {
-      const item = event.previousContainer.data[event.previousIndex];
-      item.done = event.container.id === 'doneList'; // Atualiza o valor de done
-      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+      transferArrayItem(evento.previousContainer.data,
+                        evento.container.data,
+                        evento.previousIndex,
+                        evento.currentIndex);
+      console.log(evento.container.data); // Verificar se o array está sendo corretamente passado
+      evento.container.data[evento.currentIndex].done = evento.container.id === 'doneList';
     }
   }
+
+  // drop(event: CdkDragDrop<Schedule[]>) {
+  //   if (event.previousContainer === event.container) {
+  //     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+  //   } else {
+  //     transferArrayItem(
+  //       event.previousContainer.data,
+  //       event.container.data,
+  //       event.previousIndex,
+  //       event.currentIndex,
+  //     );
+  //   }
+  // }
+  
+  
+  
+  
   
   
 }
