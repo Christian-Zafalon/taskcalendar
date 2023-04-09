@@ -9,7 +9,11 @@
         <mat-form-field class="example-full-width">
             <mat-label>Appointment time</mat-label>
             <input matInput formControlName="time" name="time">
-        </mat-form-field>
+            <mat-error *ngIf="agendaForm.controls['time'].errors && agendaForm.get('time')?.errors">
+              Please enter a valid time (HH:mm)
+            </mat-error>
+          </mat-form-field>
+          
 
         <mat-form-field class="example-full-width">
             <mat-label>Commitment note</mat-label>

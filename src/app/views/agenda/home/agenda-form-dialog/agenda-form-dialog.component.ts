@@ -20,16 +20,17 @@ export class AgendaFormDialogComponent implements OnInit {
   ) {
 
   }
-
+  
   ngOnInit(): void {
     this.agendaForm = this.fb.group({
       title: [this.data ? this.data.title : '', Validators.required],
       date: [this.data ? this.data.date : '', Validators.required],
-      time: [this.data ? this.data.time : '', Validators.required],
+      time: [this.data ? this.data.time : '', [Validators.required, Validators.pattern(/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/)]],
       notes: [this.data ? this.data.notes : '', Validators.required],
       done: [false]
     });
   }
+  
 
   cancel() {
     this.dialogRef.close();

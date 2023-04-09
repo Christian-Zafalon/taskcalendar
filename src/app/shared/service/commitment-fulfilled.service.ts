@@ -12,7 +12,6 @@ export class CommitmentFulfilledService {
       id: 1,
       title: 'Tarefa feita1',
       date: new Date(2022, 11, 30),
-      time: '09:00',
       notes: 'Meeting to decide on the business rule',
       done: true
     },
@@ -20,7 +19,6 @@ export class CommitmentFulfilledService {
       id: 2,
       title: 'Tarefa feita 2',
       date: new Date(2022, 11, 31),
-      time: '14:00',
       notes: 'Presentation of the final project to the client (Production)',
       done: true
     }
