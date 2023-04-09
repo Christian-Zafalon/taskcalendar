@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog'
 import { AgendaFormDialogComponent } from './agenda-form-dialog/agenda-form-dialog.component';
 
@@ -7,14 +7,11 @@ import { AgendaFormDialogComponent } from './agenda-form-dialog/agenda-form-dial
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
   constructor(
     public dialog: MatDialog
   ) { }
-  ngOnInit(): void {
-
-  }
 
   addAgenda(): void {
     const dialogRef = this.dialog.open(AgendaFormDialogComponent, {
@@ -22,7 +19,7 @@ export class HomeComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('The dialog was closed' + result);
     });
   }
 }

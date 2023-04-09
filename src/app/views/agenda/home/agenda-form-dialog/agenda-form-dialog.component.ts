@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Schedule } from 'src/app/shared/model/schedule';
 import { ScheduleService } from 'src/app/shared/service/schedule.service';
 
 
@@ -16,7 +17,7 @@ export class AgendaFormDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<AgendaFormDialogComponent>,
     private fb: FormBuilder,
     private agendaService: ScheduleService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: Schedule
   ) {
 
   }
@@ -38,8 +39,7 @@ export class AgendaFormDialogComponent implements OnInit {
   }
 
   createSchedule() {
-    // this.agendaService.addAgenda(this.agendaForm.value);
-    // window.location.reload();
+
     if (this.agendaForm.valid) {
       if (this.data) {
         this.agendaService.updateAgenda(this.data.id, this.agendaForm.value);

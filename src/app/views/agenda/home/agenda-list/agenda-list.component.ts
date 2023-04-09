@@ -55,7 +55,7 @@ export class AgendaListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('The dialog was closed' + result);
     });
   }
 
@@ -71,15 +71,13 @@ export class AgendaListComponent implements OnInit {
         event.currentIndex,
       );
       if (event.item.data.done === false) {
-        debugger
-        let agendaId = event.item.data.id;
+        const agendaId = event.item.data.id;
         this.commitmentFulFilled.addFinalizedSchedule(event.item.data);
         window.location.reload();
         this.agendaService.deleteAgenda(agendaId);
         window.location.reload();
       } else {
-        debugger
-        let agendaId = event.item.data.id;
+        const agendaId = event.item.data.id;
         this.agendaService.addAgenda(event.item.data);
         window.location.reload();
         this.commitmentFulFilled.deleteFinalizedSchedule(agendaId);
