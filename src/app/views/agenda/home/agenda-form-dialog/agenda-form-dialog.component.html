@@ -4,25 +4,41 @@
         <mat-form-field class="example-full-width">
             <mat-label>Name Schedule</mat-label>
             <input matInput formControlName="title" name="title">
+            <mat-error *ngIf="agendaForm.controls['title'].errors && agendaForm.get('title')?.errors">
+                Maximum title length is 25 characters and title is required
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-            <mat-label>Appointment time</mat-label>
-            <input matInput formControlName="time" name="time">
-            <mat-error *ngIf="agendaForm.controls['time'].errors && agendaForm.get('time')?.errors">
-              Please enter a valid time (HH:mm)
+            <mat-label>Appointment start time</mat-label>
+            <input type="time" matInput formControlName="starttime" name="starttime">
+            <mat-error *ngIf="agendaForm.controls['starttime'].errors && agendaForm.get('starttime')?.errors">
+                Start time is required
             </mat-error>
-          </mat-form-field>
-          
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Appointment end time</mat-label>
+            <input type="time" matInput formControlName="endtime" name="endtime">
+            <mat-error *ngIf="agendaForm.controls['endtime'].errors && agendaForm.get('endtime')?.errors">
+                End time is required
+            </mat-error>
+        </mat-form-field>
 
         <mat-form-field class="example-full-width">
             <mat-label>Commitment note</mat-label>
             <input matInput formControlName="notes" name="notes">
+            <mat-error *ngIf="agendaForm.controls['notes'].errors && agendaForm.get('notes')?.errors">
+                Please enter at least some remarks
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label>Choose a date</mat-label>
             <input matInput formControlName="date" [matDatepicker]="picker">
+            <mat-error *ngIf="agendaForm.controls['date'].errors && agendaForm.get('date')?.errors">
+                Date is required
+            </mat-error>
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
@@ -30,6 +46,7 @@
 
     </form>
 </div>
+
 <div mat-dialog-actions>
     <button [disabled]="agendaForm.invalid" mat-raised-button color="primary" (click)="createSchedule()">Add</button>
     <button mat-button (click)="cancel()">Cancel</button>

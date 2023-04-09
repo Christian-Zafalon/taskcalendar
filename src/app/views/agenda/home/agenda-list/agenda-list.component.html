@@ -3,19 +3,22 @@
         <h2 class="box-title">Commitments to make</h2>
         <div class="grid-container" cdkDropList (cdkDropListDropped)="drop($event)" #todoList="cdkDropList"
             [cdkDropListData]="agendas" [cdkDropListConnectedTo]="[doneList]">
-        <div class="empty-placeholder" *ngIf="agendas.length === 0"></div>
+            <div class="empty-placeholder" *ngIf="agendas.length === 0"></div>
             <mat-card *ngFor="let agenda of agendas" cdkDrag class="mat-card-live" [cdkDragData]="agenda">
                 <mat-card-title class="mat-card-title-live">
                     <div class="row">
                         <p><span>{{agenda.title}}</span></p>
                         <p> <span>{{agenda.date | date: 'MM/dd/YYYY' }}</span></p>
-                        <p><span>{{agenda.time}}</span></p>
+                        <p><span>{{agenda.starttime}}</span> to <span>{{agenda.endtime}}</span></p>
                         <p><span>{{agenda.notes}}</span></p>
                         <div class="button-group">
-                            <button (click)="editSchedule(agenda)" mat-icon-button color="primary" aria-label="Edit">
+                            <button style="
+                            padding-right: 0px;" (click)="editSchedule(agenda)" mat-icon-button color="primary" aria-label="Edit">
                                 <mat-icon>edit</mat-icon>
                             </button>
-                            <button (click)="deleteSchedule(agenda.id)" mat-icon-button color="warn"
+                            <button style="
+                            padding-left: 0px;
+                            padding-right: 0px;" (click)="deleteSchedule(agenda.id)" mat-icon-button color="warn"
                                 aria-label="Delete">
                                 <mat-icon>delete</mat-icon>
                             </button>
@@ -35,7 +38,7 @@
                     <div class="row">
                         <p><span>{{task.title}}</span></p>
                         <p> <span>{{task.date | date: 'dd/MM/yyyy' }}</span></p>
-                        <p><span>{{task.time}}</span></p>
+                        <p><span>{{task.starttime}}</span> to <span>{{task.endtime}}</span></p>
                         <p><span>{{task.notes}}</span></p>
                         <div class="button-group">
                             <button (click)="deleteFinished(task.id)" mat-icon-button color="warn" aria-label="Delete">

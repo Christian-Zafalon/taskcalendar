@@ -71,10 +71,12 @@ export class AgendaListComponent implements OnInit {
         event.currentIndex,
       );
       if (event.item.data.done === false) {
+        debugger
         let agendaId = event.item.data.id;
         this.commitmentFulFilled.addFinalizedSchedule(event.item.data);
         this.agendaService.deleteAgenda(agendaId);
       }else{
+        debugger
         let agendaId = event.item.data.id;
         this.agendaService.addAgenda(event.item.data);
         this.commitmentFulFilled.deleteFinalizedSchedule(agendaId);
