@@ -7,63 +7,7 @@ import { Schedule } from '../model/schedule';
 })
 export class CommitmentFulfilledService {
 
-  private commitmentsMade: Schedule[] = [
-      {
-        id: 1,
-        title: 'MEETING',
-        date: new Date(2023, 4, 1),
-        notes: 'Meeting with stakeholders to discuss project requirements',
-        starttime: 900,
-        endtime: 1030,
-        done: true
-      },
-      {
-        id: 2,
-        title: 'PRESENTATION',
-        date: new Date(2023, 4, 3),
-        notes: 'Presentation of the new product to investors',
-        starttime: 1400,
-        endtime: 1530,
-        done: true
-      },
-      {
-        id: 3,
-        title: 'DISCUSSION',
-        date: new Date(2023, 4, 5),
-        notes: 'Discussion with development team on new feature implementation',
-        starttime: 1100,
-        endtime: 1200,
-        done: true
-      },
-      {
-        id: 4,
-        title: 'TESTING',
-        date: new Date(2023, 4, 7),
-        notes: 'Testing of new feature on staging environment',
-        starttime: 900,
-        endtime: 1700,
-        done: true
-      },
-      {
-        id: 5,
-        title: 'DEVELOPMENT',
-        date: new Date(2023, 4, 10),
-        notes: 'Development of the new feature for the app',
-        starttime: 1000,
-        endtime: 1200,
-        done: true
-      },
-      {
-        id: 6,
-        title: 'TRAINING',
-        date: new Date(2023, 4, 13),
-        notes: 'Training on new software tools for the team',
-        starttime: 900,
-        endtime: 1200,
-        done: true
-      }
-    ];
-    
+  commitmentsMade!: Schedule[]
 
   constructor() {
     const finalizedAgenda = localStorage.getItem('commitmentsMade');
@@ -79,15 +23,6 @@ export class CommitmentFulfilledService {
     const commitmentsMade = finalizedAgenda ? JSON.parse(finalizedAgenda) : [];
     return of(commitmentsMade);
   }
-
-
-  // addFinalizedSchedule(commitment: Schedule): void {
-  //   const id = this.commitmentsMade.length + 1
-  //   commitment.id = id;
-  //   commitment.done = true
-  //   this.commitmentsMade.push(commitment);
-  //   localStorage.setItem('commitmentsMade', JSON.stringify(this.commitmentsMade));
-  // }
 
   addFinalizedSchedule(commitment: Schedule): void {
     let highestId = 0;

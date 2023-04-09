@@ -18,7 +18,7 @@ export class AgendaListComponent implements OnInit {
   taskPerformed!: Schedule[];
 
   constructor(
-    private agendaService: ScheduleService, 
+    private agendaService: ScheduleService,
     private commitmentFulFilled: CommitmentFulfilledService,
     private datePipe: DatePipe,
     public dialog: MatDialog) { }
@@ -58,7 +58,7 @@ export class AgendaListComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
-  
+
 
   drop(event: CdkDragDrop<Schedule[]>) {
     if (event.previousContainer === event.container) {
@@ -74,12 +74,16 @@ export class AgendaListComponent implements OnInit {
         debugger
         let agendaId = event.item.data.id;
         this.commitmentFulFilled.addFinalizedSchedule(event.item.data);
+        window.location.reload();
         this.agendaService.deleteAgenda(agendaId);
-      }else{
+        window.location.reload();
+      } else {
         debugger
         let agendaId = event.item.data.id;
         this.agendaService.addAgenda(event.item.data);
+        window.location.reload();
         this.commitmentFulFilled.deleteFinalizedSchedule(agendaId);
+        window.location.reload();
       }
     }
     console.log(event.item.data)
