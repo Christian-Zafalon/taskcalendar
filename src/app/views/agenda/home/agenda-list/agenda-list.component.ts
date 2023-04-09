@@ -14,6 +14,8 @@ import { AgendaFormDialogComponent } from '../agenda-form-dialog/agenda-form-dia
 export class AgendaListComponent implements OnInit {
 
   agendas: Schedule[] = [];
+  taskPerformed!: Schedule[];
+
   constructor(
     private agendaService: ScheduleService, 
     private datePipe: DatePipe,

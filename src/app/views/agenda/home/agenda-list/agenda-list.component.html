@@ -1,20 +1,52 @@
-<ng-container *ngFor="let agenda of agendas" style="margin: 0.5%;">
-    <mat-card class="mat-card-live">
-        <mat-card-title class="mat-card-title-live">
-            <div class="row">
-                <p><span>{{agenda.title}}</span></p>
-                <p> <span>{{agenda.date | date: 'dd/MM/yyyy' }}</span></p>
-                <p><span>{{agenda.time}}</span></p>
-                <p><span>{{agenda.notes}}</span></p>
-                <div class="button-group">
-                    <button (click)="editSchedule(agenda)" mat-icon-button color="primary" aria-label="Edit">
-                        <mat-icon>edit</mat-icon>
-                    </button>
-                    <button (click)="deleteSchedule(agenda.id)" mat-icon-button color="warn" aria-label="Delete">
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                </div>
-            </div>
-        </mat-card-title>
-    </mat-card>
-</ng-container>
+<div class="container">
+    <div class="box box1">
+        <h2 class="box-title">Tarefas a fazer</h2>
+        <div class="grid-container">
+            <ng-container *ngFor="let agenda of agendas" style="margin: 0.5%;">
+                <mat-card class="mat-card-live">
+                    <mat-card-title class="mat-card-title-live">
+                        <div class="row">
+                            <p><span>{{agenda.title}}</span></p>
+                            <p> <span>{{agenda.date | date: 'dd/MM/yyyy' }}</span></p>
+                            <p><span>{{agenda.time}}</span></p>
+                            <p><span>{{agenda.notes}}</span></p>
+                            <div class="button-group">
+                                <button (click)="editSchedule(agenda)" mat-icon-button color="primary" aria-label="Edit">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                                <button (click)="deleteSchedule(agenda.id)" mat-icon-button color="warn" aria-label="Delete">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </mat-card-title>
+                </mat-card>
+            </ng-container>
+        </div>
+    </div>
+    <div class="box box2">
+        <h2 class="box-title">Tarefas realizadas</h2>
+        <div class="grid-container">
+            <ng-container *ngFor="let agenda of agendas" style="margin: 0.5%;">
+                <mat-card class="mat-card-live">
+                    <mat-card-title class="mat-card-title-live">
+                        <div class="row">
+                            <p><span>{{agenda.title}}</span></p>
+                            <p> <span>{{agenda.date | date: 'dd/MM/yyyy' }}</span></p>
+                            <p><span>{{agenda.time}}</span></p>
+                            <p><span>{{agenda.notes}}</span></p>
+                            <div class="button-group">
+                                <button (click)="editSchedule(agenda)" mat-icon-button color="primary" aria-label="Edit">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                                <button (click)="deleteSchedule(agenda.id)" mat-icon-button color="warn" aria-label="Delete">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </mat-card-title>
+                </mat-card>
+            </ng-container>
+        </div>
+    </div>
+</div>

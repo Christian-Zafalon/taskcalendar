@@ -5,7 +5,9 @@
     padding-left: 0%; 
     padding-right: 0%; 
     padding-bottom: 0%;
-    margin: 5px;
+    margin: 18px;
+    width: 38%;
+    margin-bottom: 1%;
 }
 
 .mat-card-title-live{
@@ -30,3 +32,30 @@
 .button-group button {
     margin-left: 8px;
 }
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .container {
+    display: flex;
+  }
+  
+  .box {
+    height: 100px;
+  }
+  
+  .box1 {
+    width: 50%;
+  }
+  
+  .box2 {
+    width: 50%;
+  }
+  
+  .box-title{
+    font-size: 1.5rem; 
+    height: 15px; 
+    text-align: center;
+  }

@@ -16,6 +16,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { AgendaListComponent } from './home/agenda-list/agenda-list.component';
 import { AgendaFormDialogComponent } from './home/agenda-form-dialog/agenda-form-dialog.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { MatGridListModule } from '@angular/material/grid-list';
+
 
 
 @NgModule({
@@ -39,7 +42,9 @@ import { AgendaFormDialogComponent } from './home/agenda-form-dialog/agenda-form
     MatFormFieldModule,
     MatDatepickerModule,
     MatInputModule,
-    DatePipe
+    DatePipe,
+    DragDropModule,
+    MatGridListModule
   ],
 providers: [DatePipe]
 })
