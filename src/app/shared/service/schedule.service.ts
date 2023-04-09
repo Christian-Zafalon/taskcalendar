@@ -13,16 +13,19 @@ export class ScheduleService {
       title: 'MEETING',
       date: new Date(2022, 11, 30),
       time: '09:00',
-      notes: 'Meeting to decide on the business rule'
+      notes: 'Meeting to decide on the business rule',
+      done: true
     },
     {
       id: 2,
       title: 'PRESENTATION',
       date: new Date(2022, 11, 31),
       time: '14:00',
-      notes: 'Presentation of the final project to the client (Production)'
+      notes: 'Presentation of the final project to the client (Production)',
+      done: false
     }
   ];
+  
 
   constructor() {
     const storedAgendas = localStorage.getItem('agendas');

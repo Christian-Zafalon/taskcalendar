@@ -4,6 +4,7 @@ import { ScheduleService } from 'src/app/shared/service/schedule.service';
 import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { AgendaFormDialogComponent } from '../agenda-form-dialog/agenda-form-dialog.component';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 
 @Component({
@@ -45,4 +46,16 @@ export class AgendaListComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+
+  drop(event: CdkDragDrop<Schedule[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      const item = event.previousContainer.data[event.previousIndex];
+      item.done = event.container.id === 'doneList'; // Atualiza o valor de done
+      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+    }
+  }
+  
+  
 }
