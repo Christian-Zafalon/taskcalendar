@@ -1,54 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Schedule } from '../model/schedule';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommitmentFulfilledService {
+  private apiUrl = 'http://localhost:3000/fulfilled';
 
-  commitmentsMade!: Schedule[]
-
-  constructor() {
-    const finalizedAgenda = localStorage.getItem('commitmentsMade');
-    if (finalizedAgenda) {
-      this.commitmentsMade = JSON.parse(finalizedAgenda);
-    } else {
-      localStorage.setItem('commitmentsMade', JSON.stringify(this.commitmentsMade));
-    }
-  }
+  constructor(private http: HttpClient) {}
 
   getFinalizedSchedule(): Observable<Schedule[]> {
-    const finalizedAgenda = localStorage.getItem('commitmentsMade');
-    const commitmentsMade = finalizedAgenda ? JSON.parse(finalizedAgenda) : [];
-    return of(commitmentsMade);
+    return this.http.get<Schedule[]>(this.apiUrl);
   }
 
-  addFinalizedSchedule(commitment: Schedule): void {
-    let highestId = 0;
-    for (let i = 0; i < this.commitmentsMade.length; i++) {
-      if (this.commitmentsMade[i].id > highestId) {
-        highestId = this.commitmentsMade[i].id;
-      }
-    }
-    const newId = highestId + 1;
-    commitment.id = newId;
-    commitment.done = true;
-    this.commitmentsMade.push(commitment);
-    localStorage.setItem('commitmentsMade', JSON.stringify(this.commitmentsMade));
+  addFinalizedSchedule(commitment: Schedule): Observable<Schedule> {
+    return this.http.post<Schedule>(this.apiUrl, commitment);
   }
 
-  updateFinalizedSchedule(id: number, updatedValues: Partial<Schedule>): void {
-    const index = this.commitmentsMade.findIndex(commitment => commitment.id === id);
-    if (index >= 0) {
-      const updatedAgenda = { ...this.commitmentsMade[index], ...updatedValues };
-      this.commitmentsMade[index] = updatedAgenda;
-      localStorage.setItem('commitmentsMade', JSON.stringify(this.commitmentsMade));
-    }
+  updateFinalizedSchedule(id: number, updatedValues: Partial<Schedule>): Observable<Schedule> {
+    return this.http.put<Schedule>(`${this.apiUrl}/${id}`, updatedValues);
   }
 
-  deleteFinalizedSchedule(id: number): void {
-    this.commitmentsMade = this.commitmentsMade.filter(commitment => commitment.id !== id);
-    localStorage.setItem('commitmentsMade', JSON.stringify(this.commitmentsMade));
+  deleteFinalizedSchedule(id: number): Observable<{}> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

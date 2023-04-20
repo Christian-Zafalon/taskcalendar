@@ -1,4 +1,4 @@
-export interface Schedule {
+export interface Schedule{
     id: number;
     title: string;
     date: Date;

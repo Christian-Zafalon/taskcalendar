@@ -1,0 +1,24 @@
+{
+  "schedules": [
+    {
+      "title": "teste",
+      "date": "2023-04-25T03:00:00.000Z",
+      "starttime": "12:12",
+      "endtime": "12:12",
+      "notes": "132132",
+      "done": false,
+      "id": 1
+    }
+  ],
+  "fulfilled": [
+    {
+      "id": 1,
+      "title": "Entrega do projeto Y",
+      "date": "2022-11-30",
+      "starttime": 14,
+      "endtime": 15,
+      "notes": "Entrega final do projeto Y",
+      "done": true
+    }
+  ]
+}

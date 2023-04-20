@@ -39,13 +39,13 @@ export class AgendaListComponent implements OnInit {
   }
 
   deleteSchedule(id: number) {
-    this.agendaService.deleteAgenda(id);
-    window.location.reload();
+    this.agendaService.deleteAgenda(id)
+      .subscribe();
   }
 
   deleteFinished(id: number) {
-    this.commitmentFulFilled.deleteFinalizedSchedule(id);
-    window.location.reload();
+    this.commitmentFulFilled.deleteFinalizedSchedule(id)
+      .subscribe();
   }
 
   editSchedule(schedule: Schedule): void {
@@ -72,16 +72,18 @@ export class AgendaListComponent implements OnInit {
       );
       if (event.item.data.done === false) {
         const agendaId = event.item.data.id;
-        this.commitmentFulFilled.addFinalizedSchedule(event.item.data);
-        window.location.reload();
-        this.agendaService.deleteAgenda(agendaId);
-        window.location.reload();
+        this.commitmentFulFilled.addFinalizedSchedule(event.item.data)
+          .subscribe(() => {
+            this.agendaService.deleteAgenda(agendaId)
+              .subscribe();
+          });
       } else {
         const agendaId = event.item.data.id;
-        this.agendaService.addAgenda(event.item.data);
-        window.location.reload();
-        this.commitmentFulFilled.deleteFinalizedSchedule(agendaId);
-        window.location.reload();
+        this.agendaService.addAgenda(event.item.data)
+          .subscribe(() => {
+            this.commitmentFulFilled.deleteFinalizedSchedule(agendaId)
+              .subscribe();
+          });
       }
     }
     console.log(event.item.data)
