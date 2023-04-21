@@ -1,24 +1,14 @@
 {
   "schedules": [
     {
-      "title": "tesa123",
-      "date": "2023-04-19T03:00:00.000Z",
-      "starttime": "12:03",
-      "endtime": "23:01",
-      "notes": "teste",
+      "title": "sadasdq1",
+      "date": "2023-04-27T03:00:00.000Z",
+      "starttime": "12:13",
+      "endtime": "12:21",
+      "notes": "easdasd",
       "done": false,
       "id": 1
     }
   ],
-  "fulfilled": [
-    {
-      "title": "asdasdasdads",
-      "date": "2023-04-21T03:00:00.000Z",
-      "starttime": "12:12",
-      "endtime": "03:22",
-      "notes": "teste",
-      "done": false,
-      "id": 1
-    }
-  ]
+  "fulfilled": []
 }

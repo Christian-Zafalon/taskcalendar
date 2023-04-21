@@ -12,11 +12,11 @@ export class ScheduleService {
   constructor(private http: HttpClient) {}
 
   getAgendas(): Observable<Schedule[]> {
-    debugger
     return this.http.get<Schedule[]>(this.apiUrl);
   }
 
   addAgenda(agenda: Schedule): Observable<Schedule> {
+    agenda.done = false;
     return this.http.post<Schedule>(this.apiUrl, agenda);
   }
 

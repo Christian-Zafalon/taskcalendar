@@ -16,6 +16,7 @@ export class CommitmentFulfilledService {
   }
 
   addFinalizedSchedule(commitment: Schedule): Observable<Schedule> {
+    commitment.done = true;
     return this.http.post<Schedule>(this.apiUrl, commitment);
   }
 
