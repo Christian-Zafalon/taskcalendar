@@ -40,12 +40,12 @@ export class AgendaListComponent implements OnInit {
 
   deleteSchedule(id: number) {
     this.agendaService.deleteAgenda(id)
-      .subscribe();
+      .subscribe(() => this.getAgendas());
   }
 
   deleteFinished(id: number) {
     this.commitmentFulFilled.deleteFinalizedSchedule(id)
-      .subscribe();
+      .subscribe(() => this.getAgendas());
   }
 
   editSchedule(schedule: Schedule): void {

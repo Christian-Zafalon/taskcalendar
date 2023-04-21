@@ -1,14 +1,4 @@
 {
-  "schedules": [
-    {
-      "title": "sadasdq1",
-      "date": "2023-04-27T03:00:00.000Z",
-      "starttime": "12:13",
-      "endtime": "12:21",
-      "notes": "easdasd",
-      "done": false,
-      "id": 1
-    }
-  ],
+  "schedules": [],
   "fulfilled": []
 }
