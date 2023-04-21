@@ -40,7 +40,6 @@ export class AgendaFormDialogComponent implements OnInit {
 
   createSchedule() {
     if (this.agendaForm.valid) {
-      debugger
       if (this.data) {
         this.agendaService.updateAgenda(this.data.id, this.agendaForm.value)
           .subscribe(() => window.location.reload());
