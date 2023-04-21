@@ -24,7 +24,7 @@ export class ScheduleService {
     return this.http.put<Schedule>(`${this.apiUrl}/${id}`, updatedValues);
   }
 
-  deleteAgenda(id: number): Observable<{}> {
+  deleteAgenda(id: number): Observable<Object> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }
