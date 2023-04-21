@@ -24,7 +24,7 @@ export class CommitmentFulfilledService {
     return this.http.put<Schedule>(`${this.apiUrl}/${id}`, updatedValues);
   }
 
-  deleteFinalizedSchedule(id: number): Observable<Object> {
+  deleteFinalizedSchedule(id: number): Observable<unknown> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }
