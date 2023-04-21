@@ -3,7 +3,7 @@
         <h2 class="box-title">Commitments to make</h2>
         <div class="grid-container" cdkDropList (cdkDropListDropped)="drop($event)" #todoList="cdkDropList"
             [cdkDropListData]="agendas" [cdkDropListConnectedTo]="[doneList]">
-            <div class="empty-placeholder" *ngIf="agendas.length === 0"></div>
+            <div class="empty-placeholder" ></div>
             <mat-card *ngFor="let agenda of agendas" cdkDrag class="mat-card-live" [cdkDragData]="agenda">
                 <mat-card-title class="mat-card-title-live">
                     <div class="row">
@@ -32,7 +32,7 @@
         <h2 class="box-title">Commitments made</h2>
         <div class="grid-container" cdkDropList #doneList="cdkDropList" (cdkDropListDropped)="drop($event)"
             [cdkDropListData]="taskPerformed" [cdkDropListConnectedTo]="[todoList]">
-            <div class="empty-placeholder" *ngIf="taskPerformed.length === 0"></div>
+            <div class="empty-placeholder" ></div>
             <mat-card *ngFor="let task of taskPerformed" cdkDrag class="mat-card-live" [cdkDragData]="task">
                 <mat-card-title class="mat-card-title-live">
                     <div class="row">
