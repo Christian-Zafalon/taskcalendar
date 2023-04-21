@@ -1,4 +1,51 @@
 {
-  "schedules": [],
-  "fulfilled": []
+  "schedules": [
+    {
+      "title": "client meeting",
+      "date": "2023-04-28T03:00:00.000Z",
+      "starttime": "12:34",
+      "endtime": "17:59",
+      "notes": "Show new developments to the customer",
+      "done": false,
+      "id": 1
+    },
+    {
+      "title": "team meeting",
+      "date": "2023-04-29T03:00:00.000Z",
+      "starttime": "10:00",
+      "endtime": "11:30",
+      "notes": "Discuss project progress with team",
+      "done": false,
+      "id": 2
+    },
+    {
+      "title": "test",
+      "date": "2023-04-27T03:00:00.000Z",
+      "starttime": "13:02",
+      "endtime": "23:12",
+      "notes": "test",
+      "done": false,
+      "id": 3
+    }
+  ],
+  "fulfilled": [
+    {
+      "title": "Meeting with directors",
+      "date": "2023-04-27T03:00:00.000Z",
+      "starttime": "09:29",
+      "endtime": "12:33",
+      "notes": "Conducting meetings with directors to see what to talk about with customers",
+      "done": true,
+      "id": 2
+    },
+    {
+      "title": "presentation preparation",
+      "date": "2023-04-30T03:00:00.000Z",
+      "starttime": "14:00",
+      "endtime": "16:00",
+      "notes": "Prepare slides for presentation",
+      "done": true,
+      "id": 4
+    }
+  ]
 }
